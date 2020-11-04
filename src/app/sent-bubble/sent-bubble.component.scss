@@ -1,0 +1,39 @@
+:host {
+  min-height: 40px;
+  max-width: 50%;
+  border: 1px solid lightblue;
+  margin: 12px;
+  border-radius: 6px;
+  position: relative;
+  left: 40%;
+  padding: 7px;
+  padding-left: 12px;
+  box-sizing: border-box;
+  word-break: break-all;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -10px;
+    bottom: -3px;
+    width: 20px;
+    height: 12px;
+    transform: rotate(12deg);
+    background: white;
+    // border-right: 1px solid lightblue;
+    border-bottom: 1px solid lightblue;
+  }
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -19px;
+    bottom: -1px;
+    width: 18px;
+    height: 12px;
+    transform: rotate(60deg);
+    background: transparent;
+    // border-right: 1px solid lightblue;
+    border-bottom: 1px solid lightblue;
+  }
+}

@@ -1,0 +1,30 @@
+:host {
+  width: 100%;
+  border: 1px solid blue;
+  box-sizing: border-box;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+.input {
+  width: 80%;
+  height: 22px;
+  margin: 0;
+  // margin-right: 5%;
+  padding: 0 18px;
+  box-sizing: border-box;
+  resize: none;
+  border: 1px solid greenyellow;
+  border-radius: 11px;
+  line-height: 20px;
+  font-size: 16px;
+}
+.sent-button {
+  background: transparent;
+  border: 1px solid greenyellow;
+  height: 22px;
+  width: 10%;
+  border-radius: 11px;
+  color: #636363;
+  cursor: pointer;
+}

@@ -1,0 +1,43 @@
+$left-width: 120px;
+
+:host {
+  border: 1px solid #66ccff;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+}
+.left {
+  width: $left-width;
+  height: 100%;
+  border-right: 1px solid green;
+}
+.right {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+.bubble-area {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+  flex: 1;
+  & > * {
+    flex-shrink: 0;
+  }
+}
+.avatar {
+  width: $left-width - 1px;
+  height: $left-width - 1px;
+  // border-right: 2px solid yellow;
+  border-bottom: 2px solid yellow;
+  display: flex;
+  &.active {
+    border-right: 2px solid white;
+  }
+  img {
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+    margin: auto;
+  }
+}
