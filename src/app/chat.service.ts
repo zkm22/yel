@@ -6,6 +6,9 @@ interface Message {
   text: string;
 }
 
+
+//TODO: 添加一个撤回功能
+//TODO: 引用功能
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +21,7 @@ export class ChatService {
     '嗯嗯',
     '嗯...',
     '然后？',
+    '细讲',
     [
       '这个方法好',
       '不过你继续说',

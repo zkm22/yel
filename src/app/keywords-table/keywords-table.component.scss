@@ -1,0 +1,16 @@
+.table {
+  text-align: center;
+}
+.delete-button {
+  background: red;
+  padding: 3px 20px;
+  outline: 0;
+  border: 0;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+}
+.delete-button:active {
+  box-shadow: 0px 0px 22px darkred inset;
+  // background: black;
+}

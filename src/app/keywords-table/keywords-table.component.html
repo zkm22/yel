@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>word</th>
+      <th>level</th>
+      <th>category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let keyword of tableData">
+      <td>{{keyword.word}}</td>
+      <td>{{keyword.level}}</td>
+      <td>{{keyword.category}}</td>
+      <td><button class="delete-button">delete</button></td>
+    </tr>
+  </tbody>
+</table>

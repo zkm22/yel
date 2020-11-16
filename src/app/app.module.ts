@@ -9,15 +9,17 @@ import { KeywordsSettingComponent } from './keywords-setting/keywords-setting.co
 import { ChatComponent } from './chat/chat.component';
 import { RecieveBubbleComponent } from './recieve-bubble/recieve-bubble.component';
 import { FormsModule } from '@angular/forms';
+import { KeywordsTableComponent } from './keywords-table/keywords-table.component';
 
 @NgModule({
-  declarations: [					
+  declarations: [						
     AppComponent,
       SentBubbleComponent,
       InputBoxComponent,
       KeywordsSettingComponent,
       ChatComponent,
       RecieveBubbleComponent,
+      KeywordsTableComponent
    ],
   imports: [
     BrowserModule,

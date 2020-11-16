@@ -1,4 +1,14 @@
-<button (click)="addRecord()" >add</button>
-<button (click)="delete()" >delete</button>
-<button (click)="find()" >find</button>
-<button (click)="getAll()" >getAll</button>
+<app-keywords-table [tableData]="allData" ></app-keywords-table>
+
+<form>
+  <label>
+    word：<input />
+  </label>
+  <label>
+    level：<input />
+  </label>
+  <label>
+    category：<input />
+  </label>
+  <button >add</button>
+</form>
