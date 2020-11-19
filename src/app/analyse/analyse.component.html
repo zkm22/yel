@@ -1,0 +1,8 @@
+<div *ngFor="let item of result" class="row">
+  <div (click)="handleMessageClick(item.message.id)" class="clickable message" [title]="item.message.text">{{item.message.text}}</div>
+  <div
+    *ngFor="let word of item.keywords"
+    class="word"
+    [title]="word.word+' category: '+word.category+' level: '+word.level"
+    >{{word.word}}</div>
+</div>

@@ -1,15 +1,24 @@
-$left-width: 120px;
+$left-width: 280px;
+$profile-height: 100px;
 
 :host {
   border: 1px solid #66ccff;
   height: 100%;
   box-sizing: border-box;
   display: flex;
+  // box-shadow: 5px 5px 30px gray;
 }
 .left {
   width: $left-width;
   height: 100%;
-  border-right: 1px solid green;
+  // border-right: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  .dark {
+    flex: 1;
+    border-radius: 0 10px 0 0;
+    box-shadow: -1px 1px 5px gray inset;
+  }
 }
 .right {
   width: 800px;
@@ -25,19 +34,33 @@ $left-width: 120px;
     flex-shrink: 0;
   }
 }
-.avatar {
-  width: $left-width - 1px;
-  height: $left-width - 1px;
-  // border-right: 2px solid yellow;
-  border-bottom: 2px solid yellow;
+.profile {
+  width: calc(100% - 20px);
+  height: $profile-height - 20px;
   display: flex;
+  padding: 10px;
+  // box-sizing: border-box;
+  &:not(:first) {
+    border-top: 1px solid black;
+  }
   &.active {
     border-right: 2px solid white;
   }
+}
+.avatar {
+  margin-right: 5px;
   img {
     border-radius: 50%;
-    width: 80%;
-    height: 80%;
+    width: $profile-height - 20px;
+    height: $profile-height - 20px;
     margin: auto;
+  }
+}
+.detail {
+  .name {
+
+  }
+  .description {
+    color: gray;
   }
 }

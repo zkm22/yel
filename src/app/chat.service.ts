@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ModeService } from './mode.service';
+import { Subject } from 'rxjs';
 
-interface Message {
+export interface Message {
   type: 'recieve' | 'send';
   text: string;
+  id: number;
 }
 
 
@@ -14,77 +16,33 @@ interface Message {
 })
 export class ChatService {
   public messages: Message[] = [];
-  private spiritInterval: number;
-  private interval = 600000;
-  private writing = false;
-  private penggenDict = [
-    '嗯嗯',
-    '嗯...',
-    '然后？',
-    '细讲',
-    [
-      '这个方法好',
-      '不过你继续说',
-    ]
-  ];
-
+  
+  public recieveStream: Subject<Message> = new Subject();
+  public sendStream: Subject<Message> = new Subject();
+  private id = 0;
+  // public notification = new window.Notification('aaa');
   constructor(
     private modeService: ModeService,
   ) {
-    this.resetInterval();
+    // window.Notification.requestPermission();
   }
-  private resetInterval() {
-    window.clearTimeout(this.spiritInterval);
-    if (this.modeService.mode === 'interactive') {
-      this.spiritInterval = window.setTimeout(() => {
-        const rd = Math.random();
-        if (rd > 0.5) {
-          this.recieve('wei,zaima?');
-        }
-        this.resetInterval();
-      }, this.interval);
-    }
-  }
-  private penggen() {
-    const rd = Math.floor(Math.random() * this.penggenDict.length);
-    let sentence = this.penggenDict[rd];
-    this.resetInterval();
-    if (typeof(sentence) === 'string') {
-      window.setTimeout(() => {
-        if (typeof(sentence) === 'string') {
-          this.recieve(sentence);
-        }
-      }, 1000);
-      return;
-    }
-    if (Array.isArray(sentence)) {
-      let t = 1000;
-      for (let i in sentence) {
-        window.setTimeout(() => {
-          this.recieve(sentence[i]);
-        }, t * (Number(i) + 1));
-      }
-    }
-  }
+  
   public send(text: string) {
-    this.messages.unshift(
-      {
-        type: 'send',
-        text,
-      }
-    );
-    if (Math.random() > 0.8) {
-      this.penggen();
-    }
-    window.clearTimeout(this.spiritInterval);
-    this.resetInterval();
+    const message: Message = {
+      type: 'send',
+      text,
+      id: this.id++
+    };
+    this.sendStream.next(message);
+    this.messages.unshift(message);
   }
   public recieve(text: string) {
-    this.messages.unshift(
-      {
-        type: 'recieve',
-        text,
-      }
-    );
+    const message: Message = {
+      type: 'recieve',
+      text,
+      id: this.id++
+    };
+    this.recieveStream.next(message);
+    this.messages.unshift(message);
   }
 }

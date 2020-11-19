@@ -1,13 +1,23 @@
 <div class="left">
-  <div *ngFor="let avatar of avatars let index = index" class="avatar" [ngClass]="{active: index===0}">
-    <img src="" [ngStyle]="{'background':avatar}" />
+  <!-- <div *ngFor="let avatar of avatars let index = index" class="avatar" [ngClass]="{active: index===0}">
+    <img [src]="characterService.curChar.avatar" [ngStyle]="{'background':avatar}" />
+  </div> -->
+  <div *ngFor="let char of chars" class="profile" [ngClass]="{active: checkCur(char)}">
+    <div class="avatar">
+      <img [src]="char.avatar" class="avatar" />
+    </div>
+    <div class="detail">
+      <div class="name">{{char.charName}}</div>
+      <div class="description">{{char.description}}</div>
+    </div>
   </div>
+  <div class="dark"></div>
 </div>
 <div class="right">
   <div class="bubble-area">
     <ng-container *ngFor="let message of chatService.messages">
-      <app-recieve-bubble *ngIf="message.type==='recieve'">{{message.text}}</app-recieve-bubble>
-      <app-sent-bubble *ngIf="message.type==='send'">{{message.text}}</app-sent-bubble>
+      <app-recieve-bubble *ngIf="message.type==='recieve'" [name]="message.id">{{message.text}}</app-recieve-bubble>
+      <app-sent-bubble #bubble *ngIf="message.type==='send'" [name]="message.id">{{message.text}}</app-sent-bubble>
     </ng-container>
   </div>
   <app-input-box></app-input-box>

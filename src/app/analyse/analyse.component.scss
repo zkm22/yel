@@ -1,0 +1,20 @@
+.clickable {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.message {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+}
+.word {
+  display: block;
+  margin-right: 10px;
+}

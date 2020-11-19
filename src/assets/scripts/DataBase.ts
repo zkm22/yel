@@ -127,8 +127,7 @@ export class Repository<T extends Entities, U extends keyof T,
         if (step) {
           cursor.advance(step);
           step = 0;
-        }
-        if (cursor && limit !== 0) {
+        } else if (cursor && limit > 0) {
           if (query(cursor.value)) {
             result.push(cursor.value);
             if (limit !== null) {
@@ -196,6 +195,19 @@ export class Repository<T extends Entities, U extends keyof T,
         reject(e);
       }
     });
+  }
+  count(): Promise<number> {
+    const request = this.db.transaction(this.name as string, 'readonly')
+    .objectStore(this.name as string)
+    .count();
+    return new Promise((resolve, reject) => {
+      request.onsuccess = () => {
+        resolve(request.result);
+      }
+      request.onerror = (e) => {
+        reject(e);
+      }
+    })
   }
 }
 

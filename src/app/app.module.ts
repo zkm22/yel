@@ -8,23 +8,26 @@ import { InputBoxComponent } from './input-box/input-box.component';
 import { KeywordsSettingComponent } from './keywords-setting/keywords-setting.component';
 import { ChatComponent } from './chat/chat.component';
 import { RecieveBubbleComponent } from './recieve-bubble/recieve-bubble.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { KeywordsTableComponent } from './keywords-table/keywords-table.component';
+import { AnalyseComponent } from './analyse/analyse.component';
 
 @NgModule({
-  declarations: [						
+  declarations: [							
     AppComponent,
       SentBubbleComponent,
       InputBoxComponent,
       KeywordsSettingComponent,
       ChatComponent,
       RecieveBubbleComponent,
-      KeywordsTableComponent
+      KeywordsTableComponent,
+      AnalyseComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,14 +1,24 @@
-<app-keywords-table [tableData]="allData" ></app-keywords-table>
+<app-keywords-table [tableData]="allData" [remove]="remove.bind(this)" ></app-keywords-table>
 
-<form>
+<form [formGroup]="addForm" (ngSubmit)="add(addForm.value)">
   <label>
-    word：<input />
+    word：<input formControlName="word" />
   </label>
   <label>
-    level：<input />
+    level：<input formControlName="level" />
   </label>
   <label>
-    category：<input />
+    category：<input formControlName="category" />
   </label>
-  <button >add</button>
+  <button type="submit">add</button>
 </form>
+<div class="paginator">
+  <button class="prev-button" (click)="changePage(offset)">prev</button>
+  <button
+    class="page-button"
+    *ngFor="let page of pages"
+    [ngStyle]="{background: offset+1===page?'red':'blue'}"
+    (click)="changePage(page)">{{page}}</button>
+  <button class="next-button" (click)="changePage(offset+2)">next</button>
+  <div class="total">total: {{count}}</div>
+</div>

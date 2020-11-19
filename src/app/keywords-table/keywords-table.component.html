@@ -11,7 +11,7 @@
       <td>{{keyword.word}}</td>
       <td>{{keyword.level}}</td>
       <td>{{keyword.category}}</td>
-      <td><button class="delete-button">delete</button></td>
+      <td><button class="delete-button" (click)="remove(keyword.word)" >delete</button></td>
     </tr>
   </tbody>
 </table>
